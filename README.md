@@ -9,7 +9,7 @@ Simple post reader app based on ReactJS
 - `TypeScript`
 - `CSS Modules`
 
-### 
+### Commands
 
 - `npm run build` - building the app
 - `npm run deploy` - gets `dist` folder and deploying to GitHub pages
