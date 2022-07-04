@@ -2,9 +2,9 @@
   "name": "supermetrics-assignment",
   "version": "1.0.0",
   "description": "Simple post reader app based on ReactJS",
-  "main": "index.ts",
+  "main": "index.js",
   "scripts": {
-    "build": "webpack --config webpack.config.js",
+    "build": "webpack --config webpack.config.ts",
     "deploy": "gh-pages -d dist",
     "lint:css": "`npm bin`/stylelint \"src/**/*.css\" --formatter verbose",
     "lint:js": "`npm bin`/eslint src --ext .ts --ext .tsx --quiet",

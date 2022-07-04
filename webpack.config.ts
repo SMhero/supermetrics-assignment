@@ -21,7 +21,7 @@ const env = dotenv.config().parsed;
 const envKeys = Object.keys(env as {}).reduce(
   (prev, next) =>
     (prev[`process.env.${next}`] = env ? JSON.stringify(env[next]) : ""),
-  {}
+  {},
 );
 
 module.exports = {
@@ -74,7 +74,6 @@ module.exports = {
   },
   output: {
     filename: "[name].js",
-    publicPath: "/",
     path: path.resolve(__dirname, "dist"),
   },
   plugins: [
