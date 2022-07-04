@@ -11,10 +11,10 @@ Simple post reader app based on ReactJS
 
 ### 
 
-`npm run build` - building the app
-`npm run deploy` - gets `dist` folder and deploying to GitHub pages
-`npm run lint` - linting of the app. With addional param like `:js` or `:css` you can lint specific files.
-`npm run start` - run dev server.
+- `npm run build` - building the app
+- `npm run deploy` - gets `dist` folder and deploying to GitHub pages
+- `npm run lint` - linting of the app. With addional param like `:js` or `:css` you can lint specific files.
+- `npm run start` - run dev server.
 
 ### Usage
 
