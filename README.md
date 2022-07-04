@@ -1,2 +1,3 @@
-# supermetrics-assignment
+# Supermetrics Assignment
+
 Simple post reader app based on ReactJS
