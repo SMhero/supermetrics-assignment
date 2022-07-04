@@ -1,9 +1,10 @@
 import { FC } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Outlet } from "react-router-dom";
 
 import Login from "pages/Login/Login";
 import NoMatch from "pages/NoMatch";
 import Main from "pages/Main/Main";
+import Posts from "components/Posts/Posts";
 import ProtectedRoute from "components/ProtectedRoute/ProtectedRoute";
 
 import styles from "./styles.css";
@@ -17,12 +18,12 @@ const App: FC = () => (
         path="/posts"
         element={
           <ProtectedRoute>
-            <div>Posts</div>
+            <Outlet />
           </ProtectedRoute>
         }
       >
-        <Route index element={<div>Posts</div>} />
-        <Route path=":name" element={<div>Posts</div>} />
+        <Route index element={<Posts />} />
+        <Route path=":name" element={<Posts />} />
       </Route>
       <Route path="*" element={<NoMatch />} />
     </Routes>

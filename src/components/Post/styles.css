@@ -1,0 +1,28 @@
+.post {
+  cursor: pointer;
+  background-color: #cbcbcb;
+  padding: 6px 16px;
+  margin-bottom: 10px;
+}
+
+.post:last-child {
+  margin-bottom: 0;
+}
+
+.date {
+  border-bottom: 1px solid #000000;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+}
+
+.author {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.name {
+  text-transform: capitalize;
+  font-weight: 400;
+}

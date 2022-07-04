@@ -1,16 +1,21 @@
+import { Navigate, useSearchParams } from "react-router-dom";
+import useTypedSelector from "hooks/useTypedSelector";
 import LoginForm from "forms/Login/Login";
 import Layout from "components/Layout/Layout";
-import { useSearchParams } from "react-router-dom";
 
 import styles from "./styles.css";
 
 const Login = () => {
+  const { data } = useTypedSelector(state => state.user);
   const [searchParams] = useSearchParams();
-  const authParam = searchParams.get("auth");
+
+  if (data?.slToken) {
+    return <Navigate to="/posts" replace />;
+  }
 
   return (
     <Layout>
-      {authParam && (
+      {searchParams.get("token") && (
         <div className={styles.info}>
           Your token is expired. You need to log in again.
         </div>

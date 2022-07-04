@@ -5,7 +5,7 @@ interface IProps {
   children: React.ReactNode;
   disabled?: boolean;
   onClick?: () => void;
-  type: "button" | "submit" | "reset";
+  type?: "button" | "submit" | "reset";
 }
 
 const Button: FC<IProps> = ({

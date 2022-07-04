@@ -16,7 +16,9 @@ module.exports = {
   },
   rules: {
     quotes: 0,
+    "implicit-arrow-linebreak": 0,
     "no-param-reassign": 0,
+    "no-confusing-arrow": 0,
     "arrow-parens": [2, "as-needed", { requireForBlockBody: true }],
     curly: [2, "all"],
     "no-multiple-empty-lines": ["error", { max: 1, maxEOF: 1 }],
@@ -31,16 +33,7 @@ module.exports = {
         tsx: "error",
       },
     ],
-    "jsx-a11y/click-events-have-key-events": 0,
-    "jsx-a11y/label-has-associated-control": [
-      2,
-      {
-        depth: 4,
-      },
-    ],
-    "jsx-a11y/no-static-element-interactions": 0,
-    "jsx-a11y/label-has-for": 0,
-    "jsx-a11y/no-noninteractive-element-interactions": 0,
+    "jsx-a11y/label-has-associated-control": 0,
     "max-len": ["warn", { code: 80, tabWidth: 4 }],
     "no-plusplus": 0,
     "object-curly-newline": [
@@ -67,6 +60,7 @@ module.exports = {
     "react/destructuring-assignment": 0,
     "react/button-has-type": 0,
     "react/jsx-no-undef": 2,
+    "react/jsx-one-expression-per-line": 0,
     "react/jsx-filename-extension": [
       1,
       {
@@ -85,6 +79,8 @@ module.exports = {
     {
       files: ["**/*.ts", "**/*.tsx"],
       rules: {
+        "function-paren-newline": 0,
+        "operator-linebreak": [0, "after"],
         "react/prop-types": "off",
         "react/require-default-props": 0,
         "@typescript-eslint/no-unused-vars": [2, { args: "none" }],
