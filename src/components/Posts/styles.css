@@ -1,5 +1,6 @@
 .root {
   margin: 0 24px;
+  width: 100%;
 }
 
 .title {
@@ -9,7 +10,7 @@
 .wrapper {
   display: grid;
   gap: 24px;
-  grid-template-columns: 220px 1fr;
+  grid-template-columns: 220px auto;
 }
 
 .loading {
@@ -18,6 +19,8 @@
   font-size: 18px;
   font-weight: 600;
   height: 100%;
+  justify-content: center;
+  width: 100%;
 }
 
 .users-list {
@@ -66,3 +69,11 @@
   margin-top: 10px;
 }
 
+.no-posts-found {
+  align-items: center;
+  display: flex;
+  font-size: 18px;
+  font-weight: 600;
+  height: 100%;
+  justify-content: center;
+}

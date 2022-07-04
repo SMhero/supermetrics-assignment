@@ -44,7 +44,7 @@ const Posts = () => {
   const dispatch = useTypedDispatch();
   const { name } = useParams();
   const { getPostsByDate, getUsersWithPostsCount } = usePosts();
-  const { data, error } = useTypedSelector(state => state.posts);
+  const { data, error, status } = useTypedSelector(state => state.posts);
 
   const [posts, setPosts] = useState<IPost[]>([]);
   const [users, setUsers] = useState<TUsersWithPostsCount>([]);
@@ -60,11 +60,16 @@ const Posts = () => {
   }, DEBOUNCE_TIMEOUT);
 
   const onPostSearch = debounce(({ target }: ChangeEvent<HTMLInputElement>) => {
-    const newPosts = posts.filter(
+    if (!target.value) {
+      setPosts(getPostsByDate(true, name));
+      return;
+    }
+
+    const newPosts = data.posts.filter(
       post => target.value.length && post.message.includes(target.value),
     );
 
-    setPosts(!newPosts.length ? data.posts : newPosts);
+    setPosts(newPosts);
   }, DEBOUNCE_TIMEOUT);
 
   const onSortButtonClick = (isRecent: boolean) => {
@@ -97,10 +102,14 @@ const Posts = () => {
     );
   }
 
-  return (
-    <div className={styles.root}>
-      <h1 className={styles.title}>Posts</h1>
-      {data.posts.length ? (
+  const renderPosts = () => {
+    if (status === "pending") {
+      return <div className={styles.loading}>Loading...</div>;
+    }
+
+    return (
+      <>
+        <h1 className={styles.title}>Posts</h1>
         <div className={styles.wrapper}>
           <div>
             <Input
@@ -133,21 +142,29 @@ const Posts = () => {
                 <button onClick={() => onSortButtonClick(false)}>Latest</button>
               </div>
             </div>
-            <div className={styles.postsList}>
-              {posts.map(post => (
-                <Post
-                  key={post.id}
-                  createdTime={getFormattedDate(post.createdTime)}
-                  message={post.message}
-                  fromName={post.fromName}
-                />
-              ))}
-            </div>
+            {posts.length ? (
+              <div className={styles.postsList}>
+                {posts.map(post => (
+                  <Post
+                    key={post.id}
+                    createdTime={getFormattedDate(post.createdTime)}
+                    message={post.message}
+                    fromName={post.fromName}
+                  />
+                ))}
+              </div>
+            ) : (
+              <div className={styles.noPostsFound}>No posts found...</div>
+            )}
           </div>
         </div>
-      ) : (
-        <div className={styles.loading}>Loading...</div>
-      )}
+      </>
+    );
+  };
+
+  return (
+    <div className={styles.root}>
+      {renderPosts()}
       <Outlet />
     </div>
   );
